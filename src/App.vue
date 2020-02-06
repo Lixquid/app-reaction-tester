@@ -11,6 +11,14 @@
             :class="button[1]"
         ) {{button[0]}}
 
+        .custom-control.custom-switch.mt-5
+            input.custom-control-input#settings--audio(
+                type="checkbox"
+                v-model="settings.audio"
+            )
+            label.custom-control-label(for="settings--audio")
+                | Audio Alert
+
         .card.mt-5
             .card-header
                 | Times
@@ -25,6 +33,8 @@
 
 <script lang="ts">
 import { createComponent, ref, computed } from "@vue/composition-api";
+import alertData from "./alert";
+import useLocalStorageRef from "./useLocalStorageRef";
 
 enum Stage {
     Ready,
@@ -42,7 +52,11 @@ export default createComponent({
 
             times: [] as number[]
         });
+        const settings = useLocalStorageRef("settings", {
+            audio: true
+        });
 
+        const a = new Audio(alertData);
         function mainPress(): void {
             switch (data.value.stage) {
                 case Stage.Ready:
@@ -50,6 +64,9 @@ export default createComponent({
                     // Start the timer
                     data.value.timeoutId = setTimeout(() => {
                         data.value.stage = Stage.PressMe;
+                        if (settings.value.audio) {
+                            a.play();
+                        }
                         data.value.activeTime = Date.now();
                     }, Math.random() * 2000 + 1000);
                     data.value.stage = Stage.WaitForIt;
@@ -72,8 +89,6 @@ export default createComponent({
             }
         }
 
-        function alertNoise(): void {}
-
         const button = computed<[string, string]>(() => {
             switch (data.value.stage) {
                 case Stage.Ready:
@@ -87,7 +102,7 @@ export default createComponent({
             }
         });
 
-        return { data, mainPress, button };
+        return { data, settings, mainPress, button };
     }
 });
 </script>
