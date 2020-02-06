@@ -29,6 +29,8 @@
             .card-body
                 ol
                     li(v-for="(t, i) in data.times", :key="i") {{t}}ms
+                span(v-if="data.times.length")
+                    | Average: {{timesAverage}}ms
 </template>
 
 <script lang="ts">
@@ -102,7 +104,14 @@ export default createComponent({
             }
         });
 
-        return { data, settings, mainPress, button };
+        const timesAverage = computed(() =>
+            Math.floor(
+                data.value.times.reduce((p, c) => p + c, 0) /
+                    data.value.times.length
+            )
+        );
+
+        return { data, settings, mainPress, timesAverage, button };
     }
 });
 </script>
