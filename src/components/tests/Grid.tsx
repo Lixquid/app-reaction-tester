@@ -1,13 +1,14 @@
 import { useMemo, useState } from "preact/hooks";
 import { TestProps } from "../../App";
 import { ding } from "../../lib/audio";
+import { ResultSection } from "../ResultSection";
 
 /** A test where you respond to a prompt within a grid as quickly as possible. */
 export function Grid(props: TestProps) {
     const [state, setState] = useState<
         "ready" | "waiting" | "prompt" | "tooSoon" | "missed"
     >("ready");
-    const [times, setTimes] = useState<number[]>([]);
+    const [results, setResults] = useState<(number | string)[]>([]);
     const [startTime, setStartTime] = useState<Date>(new Date());
     const [timeoutId, setTimeoutId] = useState<number | null>(null);
     const [target, setTarget] = useState<number>(-1);
@@ -55,8 +56,8 @@ export function Grid(props: TestProps) {
                                         case "prompt":
                                             if (i === target) {
                                                 setState("ready");
-                                                setTimes([
-                                                    ...times,
+                                                setResults([
+                                                    ...results,
                                                     new Date().getTime() -
                                                         startTime.getTime(),
                                                 ]);
@@ -164,79 +165,7 @@ export function Grid(props: TestProps) {
             </div>
 
             {/* Results */}
-            <div class="card-body border-top">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 class="mb-3">
-                        <i class="bi-bar-chart-fill me-2"></i>
-                        Results
-                    </h3>
-                    <button
-                        class="btn btn-sm btn-outline-danger"
-                        onClick={() => setTimes([])}
-                    >
-                        Clear
-                    </button>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <table class="table table-striped table-hover border mb-0">
-                            <thead>
-                                <tr>
-                                    <th>Attempt</th>
-                                    <th>Time (ms)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {times.map((time, i) => (
-                                    <tr key={i}>
-                                        <td>{i + 1}</td>
-                                        <td>{time}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-lg-6">
-                        <p>
-                            <strong>Best time:</strong>{" "}
-                            {times.length > 0 ? Math.min(...times) : "N/A"} ms
-                        </p>
-                        <p>
-                            <strong>Worst time:</strong>{" "}
-                            {times.length > 0 ? Math.max(...times) : "N/A"} ms
-                        </p>
-                        <p>
-                            <strong>Average time:</strong>{" "}
-                            {times.length > 0
-                                ? Math.round(
-                                      times.reduce((a, b) => a + b) /
-                                          times.length
-                                  )
-                                : "N/A"}{" "}
-                            ms
-                        </p>
-                        <p>
-                            <strong>Visualization:</strong>
-                        </p>
-                        <div class="progress position-relative">
-                            {times.map((time, i) => (
-                                <div
-                                    class="progress-bar bg-success position-absolute h-100"
-                                    role="progressbar"
-                                    style={{
-                                        width: "0.5em",
-                                        left: `${Math.min(
-                                            100,
-                                            (time / 1000) * 100
-                                        )}%`,
-                                    }}
-                                    key={i}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ResultSection results={results} setResults={setResults} />
 
             {/* Instructions */}
             <div class="card-body border-top">
