@@ -1,9 +1,9 @@
 import { useMemo, useState } from "preact/hooks";
-import { GameProps } from "../../App";
+import { TestProps } from "../../App";
 import { ding } from "../../lib/audio";
 
-/** A game where you respond to a single prompt as quickly as possible. */
-export function Single(props: GameProps) {
+/** A test where you respond to a single prompt as quickly as possible. */
+export function Single(props: TestProps) {
     const [state, setState] = useState<
         "ready" | "waiting" | "prompt" | "tooSoon"
     >("ready");

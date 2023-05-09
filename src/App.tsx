@@ -1,6 +1,6 @@
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
-import { Single } from "./components/games/Single";
+import { Single } from "./components/tests/Single";
 
 /** Toggles bootstrap theme between light and dark */
 function toggleDarkMode() {
@@ -11,21 +11,21 @@ function toggleDarkMode() {
     }
 }
 
-/** The props for a game component */
-export interface GameProps {
-    /** Function to return to the game selection screen */
+/** The props for a test component */
+export interface TestProps {
+    /** Function to return to the test selection screen */
     returnToMenu: () => void;
 }
 
-const games: Record<
+const tests: Record<
     string,
     {
-        /** The human-readable name of the game */
+        /** The human-readable name of the test */
         name: string;
-        /** A short description of the game */
+        /** A short description of the test */
         description: string;
-        /** The component that renders the game */
-        component: (props: GameProps) => JSX.Element;
+        /** The component that renders the test */
+        component: (props: TestProps) => JSX.Element;
     }
 > = {
     single: {
@@ -38,29 +38,29 @@ const games: Record<
 
 export function App() {
     const [showHelp, setShowHelp] = useState(false);
-    const [activeGame, setActiveGame] = useState<keyof typeof games | null>(
+    const [activeTest, setActiveTest] = useState<keyof typeof tests | null>(
         null
     );
 
     let output: JSX.Element;
-    if (activeGame) {
-        const Component = games[activeGame].component;
-        output = <Component returnToMenu={() => setActiveGame(null)} />;
+    if (activeTest) {
+        const Component = tests[activeTest].component;
+        output = <Component returnToMenu={() => setActiveTest(null)} />;
     } else {
         // Game selection screen
         output = (
             <>
                 <h2 class="mb-4 text-center">Select a test</h2>
                 <div class="row">
-                    {Object.entries(games).map(([key, game]) => (
+                    {Object.entries(tests).map(([key, test]) => (
                         <button
                             class="col-12 col-md-6 col-lg-4 btn btn-outline-secondary mb-3 py-3"
                             onClick={() =>
-                                setActiveGame(key as keyof typeof games)
+                                setActiveTest(key as keyof typeof tests)
                             }
                         >
-                            <h2>{game.name}</h2>
-                            <p class="mb-0">{game.description}</p>
+                            <h2>{test.name}</h2>
+                            <p class="mb-0">{test.description}</p>
                         </button>
                     ))}
                 </div>
