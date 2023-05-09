@@ -20,7 +20,10 @@ export function Single(props: GameProps) {
                     <span>Single Event</span>
                     <button
                         class="btn btn-sm btn-outline-secondary"
-                        onClick={props.returnToMenu}
+                        onClick={() => {
+                            if (timeoutId) clearTimeout(timeoutId);
+                            return props.returnToMenu();
+                        }}
                     >
                         Return to menu
                     </button>
