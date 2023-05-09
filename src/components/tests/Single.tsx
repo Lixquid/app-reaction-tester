@@ -87,7 +87,10 @@ export function Single(props: TestProps) {
 
             {/* Settings */}
             <div class="card-body border-top">
-                <h3 class="mb-3">Settings</h3>
+                <h3 class="mb-3">
+                    <i class="bi-gear-fill me-2"></i>
+                    Settings
+                </h3>
                 <div class="row">
                     <div class="col-sm-3">
                         <label for="enableAudio">Audio Alert</label>
@@ -111,7 +114,10 @@ export function Single(props: TestProps) {
             {/* Results */}
             <div class="card-body border-top">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="mb-3">Results</h3>
+                    <h3 class="mb-3">
+                        <i class="bi-bar-chart-fill me-2"></i>
+                        Results
+                    </h3>
                     <button
                         class="btn btn-sm btn-outline-danger"
                         onClick={() => setTimes([])}
@@ -183,7 +189,10 @@ export function Single(props: TestProps) {
 
             {/* Instructions */}
             <div class="card-body border-top">
-                <h3 class="mb-3">Instructions</h3>
+                <h3 class="mb-3">
+                    <i class="bi-info-circle-fill me-2"></i>
+                    Instructions
+                </h3>
                 <p class="mb-0">
                     Click the button to start the test. When the button turns
                     green, click it as quickly as possible.
