@@ -124,7 +124,7 @@ export function Grid(props: TestProps) {
                 </h3>
                 <div class="row mb-3">
                     <div class="col-sm-3">
-                        <label for="gridSize" class="col-form-label">
+                        <label for="gridSize" class="col-form-label-sm">
                             Grid size
                         </label>
                     </div>

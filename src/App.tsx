@@ -1,5 +1,6 @@
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
+import { Color } from "./components/tests/Color";
 import { Grid } from "./components/tests/Grid";
 import { Single } from "./components/tests/Single";
 
@@ -40,6 +41,12 @@ const tests: Record<
         description:
             "Respond to a prompt within a grid of options as quickly as possible.",
         component: Grid,
+    },
+    color: {
+        name: "Color",
+        description:
+            "Respond to a prompt for a specific color as quickly as possible.",
+        component: Color,
     },
 };
 
