@@ -59,15 +59,17 @@ export function App() {
                 <h2 class="mb-4 text-center">Select a test</h2>
                 <div class="row">
                     {Object.entries(tests).map(([key, test]) => (
-                        <button
-                            class="col-12 col-md-6 col-lg-4 btn btn-outline-secondary mb-3 py-3"
-                            onClick={() =>
-                                setActiveTest(key as keyof typeof tests)
-                            }
-                        >
-                            <h2>{test.name}</h2>
-                            <p class="mb-0">{test.description}</p>
-                        </button>
+                        <div class="col-12 col-md-6 col-lg-4 mb-3" key={key}>
+                            <button
+                                class="btn btn-outline-secondary py-3"
+                                onClick={() =>
+                                    setActiveTest(key as keyof typeof tests)
+                                }
+                            >
+                                <h2>{test.name}</h2>
+                                <p class="mb-0">{test.description}</p>
+                            </button>
+                        </div>
                     ))}
                 </div>
             </>
