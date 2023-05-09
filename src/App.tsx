@@ -1,5 +1,6 @@
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
+import { Grid } from "./components/tests/Grid";
 import { Single } from "./components/tests/Single";
 
 /** Toggles bootstrap theme between light and dark */
@@ -33,6 +34,12 @@ const tests: Record<
         description:
             "Respond to a single audio/visual prompt as quickly as possible.",
         component: Single,
+    },
+    grid: {
+        name: "Grid",
+        description:
+            "Respond to a prompt within a grid of options as quickly as possible.",
+        component: Grid,
     },
 };
 
