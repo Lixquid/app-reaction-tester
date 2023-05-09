@@ -31,6 +31,8 @@ export function Single(props: TestProps) {
                     </button>
                 </div>
             </div>
+
+            {/* Test */}
             <div class="card-body">
                 <button
                     class={
@@ -82,25 +84,34 @@ export function Single(props: TestProps) {
                         : "Too soon!"}
                 </button>
             </div>
+
+            {/* Settings */}
             <div class="card-body border-top">
-                <div class="form-check">
-                    <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="enableAudio"
-                        checked={enableAudio}
-                        onChange={(e) =>
-                            setEnableAudio(e.currentTarget.checked)
-                        }
-                    />
-                    <label class="form-check-label" for="enableAudio">
-                        Enable audio alert
-                    </label>
+                <h3 class="mb-3">Settings</h3>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label for="enableAudio">Audio Alert</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="form-check form-switch">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="enableAudio"
+                                checked={enableAudio}
+                                onChange={(e) =>
+                                    setEnableAudio(e.currentTarget.checked)
+                                }
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            {/* Results */}
             <div class="card-body border-top">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h3>Results</h3>
+                    <h3 class="mb-3">Results</h3>
                     <button
                         class="btn btn-sm btn-outline-danger"
                         onClick={() => setTimes([])}
@@ -169,8 +180,10 @@ export function Single(props: TestProps) {
                     </div>
                 </div>
             </div>
+
+            {/* Instructions */}
             <div class="card-body border-top">
-                <h3>Instructions</h3>
+                <h3 class="mb-3">Instructions</h3>
                 <p class="mb-0">
                     Click the button to start the test. When the button turns
                     green, click it as quickly as possible.

@@ -33,6 +33,8 @@ export function Grid(props: TestProps) {
                     </button>
                 </div>
             </div>
+
+            {/* Test */}
             <div class="card-body">
                 <div class="row">
                     {Array.from({ length: gridSize }).map((_, i) => (
@@ -112,6 +114,8 @@ export function Grid(props: TestProps) {
                         : ""}
                 </button>
             </div>
+
+            {/* Settings */}
             <div class="card-body border-top">
                 <h3 class="mb-3">Settings</h3>
                 <div class="row mb-3">
@@ -155,9 +159,11 @@ export function Grid(props: TestProps) {
                     </div>
                 </div>
             </div>
+
+            {/* Results */}
             <div class="card-body border-top">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3>Results</h3>
+                    <h3 class="mb-3">Results</h3>
                     <button
                         class="btn btn-sm btn-outline-danger"
                         onClick={() => setTimes([])}
@@ -225,8 +231,10 @@ export function Grid(props: TestProps) {
                     </div>
                 </div>
             </div>
+
+            {/* Instructions */}
             <div class="card-body border-top">
-                <h3>Instructions</h3>
+                <h3 class="mb-3">Instructions</h3>
                 <p class="mb-0">
                     Click the Start button to begin. A random button will light
                     up after a random amount of time. Click the lit button as
