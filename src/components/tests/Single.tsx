@@ -123,9 +123,15 @@ export function Single(props: TestProps) {
                     <i class="bi-info-circle-fill me-2"></i>
                     Instructions
                 </h3>
+                <p>
+                    Click the large <span class="badge bg-primary">start</span>{" "}
+                    button to begin the test. After a random amount of time, the
+                    button will turn <span class="badge bg-success">green</span>{" "}
+                    and say "Now!". Click the button as quickly as possible.
+                </p>
                 <p class="mb-0">
-                    Click the button to start the test. When the button turns
-                    green, click it as quickly as possible.
+                    If you click the button before it turns green, it will count
+                    as a failed attempt.
                 </p>
             </div>
         </div>

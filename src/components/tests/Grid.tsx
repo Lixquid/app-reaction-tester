@@ -173,10 +173,15 @@ export function Grid(props: TestProps) {
                     <i class="bi-info-circle-fill me-2"></i>
                     Instructions
                 </h3>
+                <p>
+                    Click the <span class="badge bg-primary">Start</span> button
+                    to begin. After a random amount of time, a button will light
+                    up and turn <span class="badge bg-primary">blue</span>.
+                    Click the lit button as quickly as possible.
+                </p>
                 <p class="mb-0">
-                    Click the Start button to begin. A random button will light
-                    up after a random amount of time. Click the lit button as
-                    quickly as possible.
+                    If you click the wrong button, or click too soon, you will
+                    fail the test.
                 </p>
             </div>
         </div>
