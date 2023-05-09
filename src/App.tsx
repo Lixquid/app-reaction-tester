@@ -44,7 +44,6 @@ const tests: Record<
 };
 
 export function App() {
-    const [showHelp, setShowHelp] = useState(false);
     const [activeTest, setActiveTest] = useState<keyof typeof tests | null>(
         null
     );
@@ -86,13 +85,6 @@ export function App() {
                         title="Toggle dark mode"
                     >
                         <i class="bi bi-moon-fill" />
-                    </button>
-                    <button
-                        class="btn btn-info me-2"
-                        onClick={() => setShowHelp(true)}
-                    >
-                        <i class="bi bi-question-circle me-2" />
-                        Help
                     </button>
                     <a
                         href="https://lixquid.com"

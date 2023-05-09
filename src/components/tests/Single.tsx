@@ -7,11 +7,13 @@ export function Single(props: TestProps) {
     const [state, setState] = useState<
         "ready" | "waiting" | "prompt" | "tooSoon"
     >("ready");
-    const [enableAudio, setEnableAudio] = useState(true);
     const [startTime, setStartTime] = useState<Date>(new Date());
     const [times, setTimes] = useState<number[]>([]);
     const [timeoutId, setTimeoutId] = useState<number | null>(null);
     const audio = useMemo(() => new Audio(ding), []);
+
+    // Settings
+    const [enableAudio, setEnableAudio] = useState(true);
 
     return (
         <div class="card">
@@ -166,6 +168,13 @@ export function Single(props: TestProps) {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="card-body border-top">
+                <h3>Instructions</h3>
+                <p class="mb-0">
+                    Click the button to start the test. When the button turns
+                    green, click it as quickly as possible.
+                </p>
             </div>
         </div>
     );

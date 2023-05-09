@@ -225,6 +225,14 @@ export function Grid(props: TestProps) {
                     </div>
                 </div>
             </div>
+            <div class="card-body border-top">
+                <h3>Instructions</h3>
+                <p class="mb-0">
+                    Click the Start button to begin. A random button will light
+                    up after a random amount of time. Click the lit button as
+                    quickly as possible.
+                </p>
+            </div>
         </div>
     );
 }
