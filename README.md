@@ -2,7 +2,7 @@
 
 A small tool to check your reaction times.
 
-Help is available by clicking the Help button in the top right corner.
+Help is available for each game in the bottom section.
 
 https://reaction-tester.lixquid.com
 
